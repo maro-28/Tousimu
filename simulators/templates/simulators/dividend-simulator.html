@@ -1,0 +1,306 @@
+{% extends 'simulators/base.html' %}
+{% load static %}
+
+{% block page_name %}
+配当金額シミュレーション
+{% endblock page_name %}
+
+{% block tab1 %}
+<a href="#canva1" class="nav-link active" data-toggle="tab" id="id_last_dividend_tab">最終年間配当金額</a>
+{% endblock tab1 %}
+
+{% block tab2 %}
+<a href="#canva2" class="nav-link" data-toggle="tab" id="id_monthly_amount_tab">毎月の投資金額</a>
+{% endblock tab2 %}
+
+{% block tab3 %}
+<a href="#canva3" class="nav-link" data-toggle="tab" id="id_period_tab">投資期間</a>
+{% endblock tab3 %}
+
+{% block tab4 %}
+<a href="#canva4" class="nav-link" data-toggle="tab" id="id_yearly_yield_tab">配当利回り</a>
+{% endblock tab4 %}
+
+{% block tab1_content %}
+<div class="row">
+  <div class="col-xl-8">
+    <form method="post">
+      <div class="form-row">
+        <div class="form-group col-sm-6 col-lg-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="monthly_amount_addon" class="input-group-text"
+                for="id_last_dividend_monthly_amount">毎月の投資額</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_last_dividend_monthly_amount" value="50000"
+              min="0" max="9999999" step="10000" required pattern="\d*" aria-describedby='monthly_amount_addon'>
+            <div class="input-group-append">
+              <label id="monthly_amount_addon" class="input-group-text" for="id_last_dividend_monthly_amount">円</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="period_addon" class="input-group-text" for='id_last_dividend_period'>投資期間</label>
+            </div>
+            <input type="number" class="form-control text-right" value="20" min="0" max="99" required
+              id="id_last_dividend_period" pattern="\d*" aria-describedby='period_addon'>
+            <div class="input-group-append">
+              <label id="period_addon" class="input-group-text" for='id_last_dividend_period'>年</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="yearly_yield_addon" class="input-group-text" for="id_last_dividend_yearly_yield">配当利回り</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_last_dividend_yearly_yield" value="3"
+              min="-99.9" max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon'>
+            <div class="input-group-append">
+              <label id="yearly_yield_addon" class="input-group-text" for="id_last_dividend_yearly_yield">%</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="increase_rate_addon" class="input-group-text" for="id_last_dividend_increase_rate">増配率</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_last_dividend_increase_rate" value="5"
+              min="-99.9" max="99.9" step="0.1" required pattern="\d*" aria-describedby='increase_rate_addon'>
+            <div class="input-group-append">
+              <label id="increase_rate_addon" class="input-group-text" for="id_last_dividend_increase_rate">%</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="text-center col">
+    <h2 id="id_last_dividend"></h2>
+  </div>
+</div>
+<div class='col text-center'>
+  <div id="id_last_dividend_twitter_share">
+  </div>
+</div>
+<div class="chart-container" style="position: relative; width:100%; height:70vh">
+  <canvas id="id_last_dividend_radar_chart"></canvas>
+</div>
+{% endblock tab1_content %}
+
+{% block tab2_content %}
+<div class="row">
+  <div class="col-xl-8">
+    <form method="post">
+      <div class="form-row">
+        <div class="form-group col-sm-6 col-lg-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="last_dividend_addon" class="input-group-text"
+                for="id_monthly_amount_last_dividend">最終年間配当金額</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_monthly_amount_last_dividend" value="2400000"
+              min="0" max="999999999" step="100000" required pattern="\d*" aria-describedby='last_dividend_addon'>
+            <div class="input-group-append">
+              <label id="last_dividend_addon" class="input-group-text" for="id_monthly_amount_last_dividend">円</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="period_addon" class="input-group-text" for='id_monthly_amount_period'>投資期間</label>
+            </div>
+            <input type="number" class="form-control text-right" value="20" min="0" max="99" required
+              id="id_monthly_amount_period" pattern="\d*" aria-describedby='period_addon'>
+            <div class="input-group-append">
+              <label id="period_addon" class="input-group-text" for='id_monthly_amount_period'>年</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="yearly_yield_addon" class="input-group-text" for="id_monthly_amount_yearly_yield">配当利回り</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_monthly_amount_yearly_yield" value="3"
+              min="-99.9" max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon'>
+            <div class="input-group-append">
+              <label id="yearly_yield_addon" class="input-group-text" for="id_monthly_amount_yearly_yield">%</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="increase_rate_addon" class="input-group-text" for="id_monthly_amount_increase_rate">増配率</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_monthly_amount_increase_rate" value="5"
+              min="-99.9" max="99.9" step="0.1" required pattern="\d*" aria-describedby='increase_rate_addon'>
+            <div class="input-group-append">
+              <label id="increase_rate_addon" class="input-group-text" for="id_monthly_amount_increase_rate">%</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="text-center col">
+    <h2 id="id_monthly_amount"></h2>
+  </div>
+</div>
+<div class='col text-center'>
+  <div id="id_monthly_amount_twitter_share">
+  </div>
+</div>
+<div class="chart-container" style="position: relative; width:100%; height:70vh">
+  <canvas id="id_monthly_amount_radar_chart"></canvas>
+</div>
+{% endblock tab2_content %}
+
+{% block tab3_content %}
+<div class="row">
+  <div class="col-xl-8">
+    <form method="post">
+      <div class="form-row">
+        <div class="form-group col-sm-6 col-lg-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="last_dividend_addon" class="input-group-text" for="id_period_last_dividend">最終年間配当金額</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_period_last_dividend" value="2400000" min="0"
+              max="999999999" step="100000" required pattern="\d*" aria-describedby='last_dividend_addon'>
+            <div class="input-group-append">
+              <label id="last_dividend_addon" class="input-group-text" for="id_period_last_dividend">円</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-sm-6 col-lg-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="monthly_amount_addon" class="input-group-text" for="id_period_monthly_amount">毎月の投資金額</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_period_monthly_amount" value="50000" min="0"
+              max="9999999" step="10000" required pattern="\d*" aria-describedby='monthly_amount_addon'>
+            <div class="input-group-append">
+              <label id="monthly_amount_addon" class="input-group-text" for="id_period_monthly_amount">円</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="yearly_yield_addon" class="input-group-text" for="id_period_yearly_yield">配当利回り</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_period_yearly_yield" value="3" min="-99.9"
+              max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon'>
+            <div class="input-group-append">
+              <label id="yearly_yield_addon" class="input-group-text" for="id_period_yearly_yield">%</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="increase_rate_addon" class="input-group-text" for="id_period_increase_rate">増配率</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_period_increase_rate" value="5" min="-99.9"
+              max="99.9" step="0.1" required pattern="\d*" aria-describedby='increase_rate_addon'>
+            <div class="input-group-append">
+              <label id="increase_rate_addon" class="input-group-text" for="id_period_increase_rate">%</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="text-center col">
+    <h2 id="id_period"></h2>
+  </div>
+</div>
+<div class='col text-center'>
+  <div id="id_period_twitter_share">
+  </div>
+</div>
+<div class="chart-container" style="position: relative; width:100%; height:70vh">
+  <canvas id="id_period_radar_chart"></canvas>
+</div>
+{% endblock tab3_content %}
+
+{% block tab4_content %}
+<div class="row">
+  <div class="col-xl-8">
+    <form method="post">
+      <div class="form-row">
+        <div class="form-group col-sm-6 col-lg-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="last_dividend_addon" class="input-group-text"
+                for="id_yearly_yield_last_dividend">最終年間配当金額</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_yearly_yield_last_dividend" value="2400000"
+              min="0" max="999999999" step="100000" required pattern="\d*" aria-describedby='last_dividend_addon'>
+            <div class="input-group-append">
+              <label id="last_dividend_addon" class="input-group-text" for="id_yearly_yield_last_dividend">円</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-sm-6 col-lg-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="monthly_amount_addon" class="input-group-text"
+                for="id_yearly_yield_monthly_amount">毎月の投資金額</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_yearly_yield_monthly_amount" value="50000"
+              min="0" max="9999999" step="10000" required pattern="\d*" aria-describedby='monthly_amount_addon'>
+            <div class="input-group-append">
+              <label id="monthly_amount_addon" class="input-group-text" for="id_yearly_yield_monthly_amount">円</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="period_addon" class="input-group-text" for='id_yearly_yield_period'>投資期間</label>
+            </div>
+            <input type="number" class="form-control text-right" value="20" min="0" max="99" required
+              id="id_yearly_yield_period" pattern="\d*" aria-describedby='period_addon'>
+            <div class="input-group-append">
+              <label id="period_addon" class="input-group-text" for='id_yearly_yield_period'>年</label>
+            </div>
+          </div>
+        </div>
+        <div class='form-group col-sm-6 col-lg-3'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label id="increase_rate_addon" class="input-group-text" for="id_yearly_yield_increase_rate">増配率</label>
+            </div>
+            <input type="number" class="form-control text-right" id="id_yearly_yield_increase_rate" value="5"
+              min="-99.9" max="99.9" step="0.1" required pattern="\d*" aria-describedby='increase_rate_addon'>
+            <div class="input-group-append">
+              <label id="increase_rate_addon" class="input-group-text" for="id_yearly_yield_increase_rate">%</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="text-center col">
+    <h2 id="id_yearly_yield"></h2>
+  </div>
+</div>
+<div class='col text-center'>
+  <div id="id_yearly_yield_twitter_share">
+  </div>
+</div>
+<div class="chart-container" style="position: relative; width:100%; height:70vh">
+  <canvas id="id_yearly_yield_radar_chart"></canvas>
+</div>
+{% endblock tab4_content %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'simulators/js/high-div.js' %}"></script>
+{% endblock js %}
