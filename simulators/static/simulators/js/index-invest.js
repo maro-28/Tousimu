@@ -1,31 +1,30 @@
 cal_draw_last_funded_amount();
 
-function param_check(monthly_amount = 100000, period = 20, yearly_yield = 1, last_funded_amount = 1000000, result_id) {
+function param_check(monthly_amount = 100000, period = 20, yearly_yield = 1, last_funded_amount = 1000000) {
     if (period <= 0 || period > 80) {
-        return $(result_id).html('投資期間は1~80の整数で入力して下さい！');
+        return $('.result').html('投資期間は1~80の整数で入力して下さい！');
     } else if (0 > yearly_yield || yearly_yield > 99.9) {
-        return $(result_id).html('利回りは0~99.9の数値で入力して下さい！');
+        return $('.result').html('利回りは0~99.9の数値で入力して下さい！');
     } else if (monthly_amount < 1000 || monthly_amount > 9999999) {
-        return $(result_id).html('毎月の投資金額は1,000~9,999,999円の整数で入力して下さい！');
+        return $('.result').html('毎月の投資金額は1,000~9,999,999円の整数で入力して下さい！');
     } else if (last_funded_amount < 1000000 || last_funded_amount > 999999999) {
-        return $(result_id).html('最終積立金額は1,000,000~999,999,999円の整数で入力して下さい！');
+        return $('.result').html('最終積立金額は1,000,000~999,999,999円の整数で入力して下さい！');
     } else {
         return false;
     }
 }
 
-function make_tweet_share(id, text) {
-    return $(id).html('<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" data-text=' + text + '\n" > </a> <script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8" ></script > ');
+function make_tweet_share(text) {
+    return $('.twitter_share').html('<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" data-text=' + text + '\n" > </a> <script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8" ></script > ');
 }
 
 function cal_draw_last_funded_amount() {
     var period = $('#id_last_funded_period')[0].value
     var yearly_yield = $('#id_last_funded_yearly_yield')[0].value
     var monthly_amount = $('#id_last_funded_monthly_amount')[0].value
-    var result_id = '#id_last_funded_amount';
-    $('#id_last_funded_twitter_share').html('');
-    param_check(monthly_amount, period, yearly_yield, last_funded_amount, result_id)
-    if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount, result_id)) {
+    $('.twitter_share').html('');
+    param_check(monthly_amount, period, yearly_yield, last_funded_amount)
+    if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount)) {
         var windowWidth = window.innerWidth;
         if (windowWidth >= 600) {
             var [periods, funded_amounts, principals, last_funded_amount] = cal_last_funded_amount(period, yearly_yield, monthly_amount);
@@ -33,10 +32,10 @@ function cal_draw_last_funded_amount() {
         else {
             var [periods, funded_amounts, principals, last_funded_amount] = cal_last_funded_amount_mobile(period, yearly_yield, monthly_amount);
         }
-        $(result_id).html('最終積立金額 ' + last_funded_amount + '円');
+        $('.result').html('最終積立金額 ' + last_funded_amount + '円');
         var twitter_text = '毎月' + Number(monthly_amount).toLocaleString() + '円投資し、利回り' + Math.round(yearly_yield * 10) / 10 + '%で運用すると、' + period + '年後の最終積立金額は' + last_funded_amount + '円になります。';
-        make_tweet_share('#id_last_funded_twitter_share', twitter_text)
-        drawlinechart(periods, funded_amounts, principals, 'id_last_funded_radar_chart');
+        make_tweet_share(twitter_text)
+        drawlinechart(periods, funded_amounts, principals, 'id_first_tab_radar_chart');
     }
 }
 
@@ -44,10 +43,9 @@ function cal_draw_monthly_amount() {
     var period = $('#id_monthly_amount_period')[0].value
     var yearly_yield = $('#id_monthly_amount_yearly_yield')[0].value
     var last_funded_amount = $('#id_monthly_amount_last_funded_amount')[0].value
-    var result_id = '#id_monthly_amount'
-    $('#id_monthly_amount_twitter_share').html('');
-    param_check(monthly_amount, period, yearly_yield, last_funded_amount, result_id)
-    if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount, result_id)) {
+    $('.twitter_share').html('');
+    param_check(monthly_amount, period, yearly_yield, last_funded_amount)
+    if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount)) {
         var monthly_amount = cal_monthly_amount(period, yearly_yield, last_funded_amount);
         var windowWidth = window.innerWidth;
         if (windowWidth >= 600) {
@@ -56,10 +54,10 @@ function cal_draw_monthly_amount() {
         else {
             var [periods, funded_amounts, principals] = cal_last_funded_amount_mobile(period, yearly_yield, monthly_amount);
         }
-        $(result_id).html('毎月の投資額 ' + Math.round(monthly_amount).toLocaleString() + '円');
+        $('.result').html('毎月の投資額 ' + Math.round(monthly_amount).toLocaleString() + '円');
         var twitter_text = period + '年間、' + '利回り' + Math.round(yearly_yield * 10) / 10 + '%で運用し、最終積立金額' + Number(last_funded_amount).toLocaleString() + '円を達成するには、毎月' + Math.round(monthly_amount).toLocaleString() + '円投資する必要があります。';
-        make_tweet_share('#id_monthly_amount_twitter_share', twitter_text)
-        drawlinechart(periods, funded_amounts, principals, 'id_monthly_amount_radar_chart');
+        make_tweet_share(twitter_text)
+        drawlinechart(periods, funded_amounts, principals, 'id_second_tab_radar_chart');
     }
 }
 
@@ -67,10 +65,9 @@ function cal_draw_period() {
     var monthly_amount = $('#id_period_monthly_amount')[0].value
     var yearly_yield = $('#id_period_yearly_yield')[0].value
     var last_funded_amount = $('#id_period_last_funded_amount')[0].value
-    var result_id = '#id_period'
-    $('#id_period_twitter_share').html('');
-    param_check(monthly_amount, period, yearly_yield, last_funded_amount, result_id)
-    if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount, result_id)) {
+    $('.twitter_share').html('');
+    param_check(monthly_amount, period, yearly_yield, last_funded_amount)
+    if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount)) {
         var period = cal_period(monthly_amount, yearly_yield, last_funded_amount);
         var windowWidth = window.innerWidth;
         if (windowWidth >= 600) {
@@ -79,10 +76,10 @@ function cal_draw_period() {
         else {
             var [periods, funded_amounts, principals] = cal_last_funded_amount_mobile(period, yearly_yield, monthly_amount);
         }
-        $(result_id).html('投資期間 ' + Math.round(period).toLocaleString() + '年');
+        $('.result').html('投資期間 ' + Math.round(period).toLocaleString() + '年');
         var twitter_text = '毎月' + Math.round(monthly_amount).toLocaleString() + '円投資し、利回り' + Math.round(yearly_yield * 10) / 10 + '%で運用して、最終積立金額' + Number(last_funded_amount).toLocaleString() + '円を達成するのに必要な投資期間は' + period + '年です。';
-        make_tweet_share('#id_period_twitter_share', twitter_text)
-        drawlinechart(periods, funded_amounts, principals, 'id_period_radar_chart');
+        make_tweet_share(twitter_text)
+        drawlinechart(periods, funded_amounts, principals, 'id_third_tab_radar_chart');
     }
 }
 
@@ -90,10 +87,9 @@ function cal_draw_yearly_yield() {
     var monthly_amount = $('#id_yearly_yield_monthly_amount')[0].value
     var period = $('#id_yearly_yield_period')[0].value
     var last_funded_amount = $('#id_yearly_yield_last_funded_amount')[0].value
-    var result_id = '#id_yearly_yield'
-    $('#id_yearly_yield_twitter_share').html('');
-    param_check(monthly_amount, period, yearly_yield, last_funded_amount, result_id)
-    if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount, result_id)) {
+    $('.twitter_share').html('');
+    param_check(monthly_amount, period, yearly_yield, last_funded_amount)
+    if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount)) {
         var yearly_yield = cal_yearly_yield(monthly_amount, period, last_funded_amount);
         var windowWidth = window.innerWidth;
         if (windowWidth >= 600) {
@@ -102,24 +98,24 @@ function cal_draw_yearly_yield() {
         else {
             var [periods, funded_amounts, principals] = cal_last_funded_amount_mobile(period, yearly_yield, monthly_amount);
         }
-        $(result_id).html('利回り ' + Math.round(yearly_yield * 10) / 10 + '%');
+        $('.result').html('利回り ' + Math.round(yearly_yield * 10) / 10 + '%');
         var twitter_text = period + '年間、毎月' + Math.round(monthly_amount).toLocaleString() + '円投資し、最終積立金額' + Number(last_funded_amount).toLocaleString() + '円を達成するのに必要な利回りは' + Math.round(yearly_yield * 10) / 10 + '%です。';
-        make_tweet_share('#id_yearly_yield_twitter_share', twitter_text);
-        drawlinechart(periods, funded_amounts, principals, 'id_yearly_yield_radar_chart');
+        make_tweet_share(twitter_text);
+        drawlinechart(periods, funded_amounts, principals, 'id_forth_tab_radar_chart');
     }
 }
 
 // 初期表示：最終積立額
-$('#id_last_funded_tab').click(cal_draw_last_funded_amount);
+$('#id_first_tab').click(cal_draw_last_funded_amount);
 
 // 初期表示：毎月の積立額
-$('#id_monthly_amount_tab').click(cal_draw_monthly_amount);
+$('#id_second_tab').click(cal_draw_monthly_amount);
 
 // 初期表示：積立期間
-$('#id_period_tab').click(cal_draw_period);
+$('#id_third_tab').click(cal_draw_period);
 
 // 初期表示：期待利回り
-$('#id_yearly_yield_tab').click(cal_draw_yearly_yield);
+$('#id_forth_tab').click(cal_draw_yearly_yield);
 
 // 再描画：最終積立額
 $('#id_last_funded_period,#id_last_funded_yearly_yield, #id_last_funded_monthly_amount')

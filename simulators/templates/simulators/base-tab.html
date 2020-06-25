@@ -1,0 +1,124 @@
+{% extends 'simulators/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'simulators/css/base-tab.css' %}">
+{% endblock css %}
+
+{% block content %}
+<main class='m-1'>
+  <h3 class='text-center mt-3'>{% block page_name %}未設定{% endblock page_name %}</h3>
+  <ul class="nav nav-tabs navbar-expand-lg nav-fill">
+    <li class="nav-item">
+      <a href="#canva1" class="nav-link active" data-toggle="tab" id="id_first_tab">
+        {% block tab1 %}未設定{% endblock tab1 %}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#canva2" class="nav-link" data-toggle="tab" id="id_second_tab">
+        {% block tab2 %}未設定{% endblock tab2 %}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#canva3" class="nav-link" data-toggle="tab" id="id_third_tab">
+        {% block tab3 %}未設定{% endblock tab3 %}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#canva4" class="nav-link" data-toggle="tab" id="id_forth_tab">
+        {% block tab4 %}未設定{% endblock tab4 %}
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content my-2">
+    <div id="canva1" class="tab-pane fade show active container-fluid">
+      <div class="row">
+        <div class="col-xl-8">
+          <form>
+            <div class="form-row">
+              {% block tab1_content %}
+              {% endblock tab1_content %}
+            </div>
+          </form>
+        </div>
+        <div class="text-center col">
+          <h2 class="result"></h2>
+        </div>
+      </div>
+      <div class='col text-center'>
+        <div class="twitter_share">
+        </div>
+      </div>
+      <div class="chart-container" style="position: relative; width:100%; height:70vh">
+        <canvas id="id_first_tab_radar_chart"></canvas>
+      </div>
+    </div>
+    <div id="canva2" class="tab-pane fade container-fluid">
+      <div class="row">
+        <div class="col-xl-8">
+          <form>
+            <div class="form-row">
+              {% block tab2_content %}
+              {% endblock tab2_content %}
+            </div>
+          </form>
+        </div>
+        <div class="text-center col">
+          <h2 class="result"></h2>
+        </div>
+      </div>
+      <div class='col text-center'>
+        <div class="twitter_share">
+        </div>
+      </div>
+      <div class="chart-container" style="position: relative; width:100%; height:70vh">
+        <canvas id="id_second_tab_radar_chart"></canvas>
+      </div>
+    </div>
+    <div id="canva3" class="tab-pane fade container-fluid">
+      <div class="row">
+        <div class="col-xl-8">
+          <form>
+            <div class="form-row">
+              {% block tab3_content %}
+              {% endblock tab3_content %}
+            </div>
+          </form>
+        </div>
+        <div class="text-center col">
+          <h2 class="result"></h2>
+        </div>
+      </div>
+      <div class='col text-center'>
+        <div class="twitter_share">
+        </div>
+      </div>
+      <div class="chart-container" style="position: relative; width:100%; height:70vh">
+        <canvas id="id_third_tab_radar_chart"></canvas>
+      </div>
+    </div>
+    <div id="canva4" class="tab-pane fade container-fluid">
+      <div class="row">
+        <div class="col-xl-8">
+          <form>
+            <div class="form-row">
+              {% block tab4_content %}
+              {% endblock tab4_content %}
+            </div>
+          </form>
+        </div>
+        <div class="text-center col">
+          <h2 class="result"></h2>
+        </div>
+      </div>
+      <div class='col text-center'>
+        <div class="twitter_share">
+        </div>
+      </div>
+      <div class="chart-container" style="position: relative; width:100%; height:70vh">
+        <canvas id="id_forth_tab_radar_chart"></canvas>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

@@ -33,16 +33,16 @@
 
   {% block css %}
   {% endblock css %}
-
-  <link rel="stylesheet" href="{% static 'simulators/css/base.css' %}">
+  
   <script type="text/javascript" src="{% static 'simulators/js/Chart.js' %}"></script>
   <script type="text/javascript" src="{% static 'simulators/js/chartjs-plugin-datalabels.min.js' %}"></script>
 
 </head>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url "simulators:index" %}"><img class='img-fluid'
-        src="{% static 'simulators/img/logo.png' %}"></a>
+    <a class="navbar-brand" href="{% url "simulators:index" %}">
+      <img class='img-fluid' src="{% static 'simulators/img/logo.png' %}">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -64,45 +64,8 @@
 <body>
   {% block content %}
   {% endblock content %}
-  <main class='m-1'>
-    <h3 class='text-center mt-3'>{% block page_name %}未設定{% endblock page_name %}</h3>
-    <ul class="nav nav-tabs navbar-expand-lg nav-fill">
-      <li class="nav-item">
-        {% block tab1 %}未設定{% endblock tab1 %}
-      </li>
-      <li class="nav-item">
-        {% block tab2 %}未設定{% endblock tab2 %}
-      </li>
-      <li class="nav-item">
-        {% block tab3 %}未設定{% endblock tab3 %}
-      </li>
-      <li class="nav-item">
-        {% block tab4 %}未設定{% endblock tab4 %}
-      </li>
-    </ul>
-    <div class="tab-content my-2">
-      <div id="canva1" class="tab-pane fade show active container-fluid">
-        {% block tab1_content %}
-        {% endblock tab1_content %}
-      </div>
-
-      <div id="canva2" class="tab-pane fade container-fluid">
-        {% block tab2_content %}
-        {% endblock tab2_content %}
-      </div>
-
-      <div id="canva3" class="tab-pane fade container-fluid">
-        {% block tab3_content %}
-        {% endblock tab3_content %}
-      </div>
-
-      <div id="canva4" class="tab-pane fade container-fluid">
-        {% block tab4_content %}
-        {% endblock tab4_content %}
-      </div>
-    </div>
-  </main>
 </body>
+
 <footer class='page-footer font-small mt-5' style='background-color: #87A2DB'>
   <div class="footer-copyright text-center py-4" style='color: #fff'>
     © 2020 Copyright:

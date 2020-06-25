@@ -1,123 +1,63 @@
+{% extends 'simulators/base.html' %}
 {% load static %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
 
-<!DOCTYPE html>
-<html>
+{% block css %}
+<link rel="stylesheet" href="{% static 'simulators/css/index.css' %}">
+{% endblock css %}
 
-<head>
-  <!-- エンコードの指定 -->
-  <meta charset="utf-8">
-
-  <!-- IEで常に標準モードで表示させる -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!-- 電話番号の自動リンク化を無効 -->
-  <meta name="format-detection" content="telephone=no">
-
-  <!-- viewport(レスポンシブ用) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- 公開前は検索エンジンにインデックスさせない -->
-  <meta name="robots" content="noindex, nofollow">
-
-  <!-- サイトのタイトル＆説明 -->
-  <title>Tousimu</title>
-  <meta name="description" content="長期投資で未来をシミュレーション">
-
-  <meta name=”twitter:card” content=”summary_large_image“>
-  <meta name=”twitter:site” content=”maroblog28“>
-  <meta name=”twitter:title” content=”Tousimu“>
-  <meta name=”twitter:description” content="長期投資で未来をシミュレーション">
-  <meta name=”twitter:image” content=“画像URL“>
-
-  <link rel="stylesheet" href="{% static 'simulators/css/base.css' %}">
-  <script type="text/javascript" src="{% static 'simulators/js/Chart.js' %}"></script>
-  <script type="text/javascript" src="{% static 'simulators/js/chartjs-plugin-datalabels.min.js' %}"></script>
-
-</head>
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url "simulators:index" %}"><img class='img-fluid'
-        src="{% static 'simulators/img/logo.png' %}"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav mr-auto">
-        <a class="nav-item nav-link" href="{% url 'simulators:funded-simulator' %}"
-          id='id_index_invest'>積立金額シミュレーション</a>
-        <a class="nav-item nav-link" href="{% url 'simulators:dividend-simulator' %}">配当金額シミュレーション</a>
-        <a class="nav-item nav-link" href="{% url 'simulators:flat-price-sale' %}">資産取崩しシミュレーション</a>
-      </div>
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href='https://twitter.com/maroblog28'>開発者Twitter</a>
+{% block content %}
+<main class='mt-4'>
+  <h3 class='text-center'>長期投資で未来をシミュレーション</h3>
+  <div class="row mx-2 my-4">
+    <div class="col-sm-6">
+      <div class='view overlay zoom index-card card mb-3'>
+        <div class='card-header text-center h5'>
+          積立金額シミュレーション
+        </div>
+        <img class="card-img-top" src="{% static 'simulators/img/funded-thumbnail.png' %}">
+        <div class="card card-body border-light">
+          <p class="card-text">
+            毎月同じ金額を積立投資した時の、最終積立金額のシミュレーション。
+            投資元本との比較によって複利の力を実感できます。
+            最終積立金額から逆算した毎月の投資金額・投資期間・利回りも計算可能。
+          </p>
+        </div>
+        <a href="{% url 'simulators:funded-simulator' %}"></a>
       </div>
     </div>
-  </nav>
-</header>
-
-<body>
-  <main class='mt-4'>
-    <h3 class='text-center'>長期投資で未来をシミュレーション</h3>
-    <div class="row mx-2 my-4">
-      <div class="col-sm-6">
-        <div class='view overlay zoom index-card card mb-3'>
-          <div class='card-header text-center h5'>
-            積立金額シミュレーション
-          </div>
-          <img class="card-img-top" src="{% static 'simulators/img/funded-simulator.png' %}">
-          <div class="card card-body border-light">
-            <p class="card-text">
-              毎月同じ金額を積立投資した時の、最終積立金額のシミュレーション。
-              投資元本との比較によって複利の力を実感できます。
-              最終積立金額から逆算した毎月の投資金額・投資期間・利回りも計算可能。
-            </p>
-          </div>
-          <a href="{% url 'simulators:funded-simulator' %}"></a>
+    <div class="col-sm-6">
+      <div class="view overlay zoom index-card card mb-3">
+        <div class='card-header text-center h5'>
+          配当金額シミュレーション
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="view overlay zoom index-card card mb-3">
-          <div class='card-header text-center h5'>
-            配当金額シミュレーション
-          </div>
-          <img class="card-img-top" src="{% static 'simulators/img/dividend-simulator.png' %}">
-          <div class="card card-body border-light">
-            <p class="card-text">
-              毎月同じ金額を積立投資し配当も再投資した時の、最終年間配当金額のシミュレーション。
-              増配の有無の比較によって増配の力を実感できます。
-              最終年間配当金額から逆算した毎月の投資金額・投資期間・配当利回りも計算可能。
-            </p>
-          </div>
-          <a href="{% url 'simulators:dividend-simulator' %}"></a>
+        <img class="card-img-top" src="{% static 'simulators/img/dividend-thumbnail.png' %}">
+        <div class="card card-body border-light">
+          <p class="card-text">
+            毎月同じ金額を積立投資し配当も再投資した時の、最終年間配当金額のシミュレーション。
+            増配の有無の比較によって増配の力を実感できます。
+            最終年間配当金額から逆算した毎月の投資金額・投資期間・配当利回りも計算可能。
+          </p>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="view overlay zoom index-card card mb-3">
-          <div class='card-header text-center h5'>
-            資産取崩しシミュレーション
-          </div>
-          <img class="card-img-top" src="{% static 'simulators/img/flat-price-sale.png' %}">
-          <div class="card card-body border-light">
-            <p class="card-text">
-              毎月同じ金額を取り崩すために必要な総資産額のシミュレーション。
-              投資元本との比較によって複利の力を実感できます。
-              総資産額から逆算した毎月取り崩す金額・取り崩す期間・利回りも計算可能。
-            </p>
-          </div>
-          <a href="{% url 'simulators:flat-price-sale' %}"></a>
-        </div>
+        <a href="{% url 'simulators:dividend-simulator' %}"></a>
       </div>
     </div>
-  </main>
-</body>
-<footer class='page-footer font-small mt-5' style='background-color: #87A2DB'>
-  <div class="footer-copyright text-center py-4" style='color: #fff'>
-    © 2020 Copyright:
-    <a href="https://mdbootstrap.com/" style='color: #fff'> Tousimu.work</a>
+    <div class="col-sm-6">
+      <div class="view overlay zoom index-card card mb-3">
+        <div class='card-header text-center h5'>
+          資産取崩しシミュレーション
+        </div>
+        <img class="card-img-top" src="{% static 'simulators/img/sale-thumbnail.png' %}">
+        <div class="card card-body border-light">
+          <p class="card-text">
+            毎月同じ金額を取り崩すために必要な総資産額のシミュレーション。
+            投資元本との比較によって複利の力を実感できます。
+            総資産額から逆算した毎月取り崩す金額・取り崩す期間・利回りも計算可能。
+          </p>
+        </div>
+        <a href="{% url 'simulators:flat-price-sale' %}"></a>
+      </div>
+    </div>
   </div>
-</footer>
+</main>
 
-</html>
+{% endblock content %}
