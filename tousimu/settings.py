@@ -137,11 +137,3 @@ STATIC_ROOT = '/usr/share/nginx/html/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/usr/share/nginx/html/media'
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-
-if not DEBUG:
-    SECRET_KEY = os.environ['SECRET_KEY']
