@@ -33,9 +33,13 @@
 
   {% block css %}
   {% endblock css %}
-  
+
   <script type="text/javascript" src="{% static 'simulators/js/Chart.js' %}"></script>
   <script type="text/javascript" src="{% static 'simulators/js/chartjs-plugin-datalabels.min.js' %}"></script>
+
+  {% if GOOGLE_ANALYTICS_TRACKING_ID %}
+  {% include 'ga.html' %}
+  {% endif %}
 
 </head>
 <header>

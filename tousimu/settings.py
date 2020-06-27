@@ -29,6 +29,8 @@ ALLOWED_HOSTS = ['tousimu.work']
 
 SITE_ID = 1
 
+GOOGLE_ANALYTICS_TRACKING_ID='UA-138975190-2'
+
 
 # Application definition
 
@@ -69,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django_blog.context_processors.google_analytics',
             ],
             'builtins':[
                 'bootstrap4.templatetags.bootstrap4',
