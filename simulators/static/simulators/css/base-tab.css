@@ -7,3 +7,21 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.twitter:hover {
+  background-color: #1397D8;
+  color:#fff;
+}
+
+.twitter {
+  border-color: #008DDE;
+  color: #008DDE;
+}
+
+.twitter:focus {
+  outline: none !important;
+}
+
+.twitter:focus {
+  box-shadow:none !important;
+ }
