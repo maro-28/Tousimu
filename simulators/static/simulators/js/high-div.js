@@ -17,7 +17,7 @@ function param_check(monthly_amount = 100000, period = 20, yearly_yield = 1, inc
 }
 
 function make_tweet_share(text) {
-    return $('.twitter_share').html('<a href="https://twitter.com/share?url=https://tousimu.work/dividend-simulator&text=' + text + '" rel="nofollow" target="_blank" class="btn twitter rounded-pill btn-sm"><i class="fa fa-twitter"></i> Tweet</a>');
+    return $('.twitter_share').html('<a href="https://twitter.com/share?url=https://tousimu.work/dividend-simulator&text=' + encodeURI(text) + '" rel="nofollow" target="_blank" class="btn twitter rounded-pill btn-sm"><i class="fa fa-twitter"></i> Tweet</a>');
 }
 
 function cal_draw_last_dividend() {

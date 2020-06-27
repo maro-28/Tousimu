@@ -15,9 +15,8 @@ function param_check(monthly_amount = 100000, period = 20, yearly_yield = 1, las
 }
 
 function make_tweet_share(text) {
-    return $('.twitter_share').html('<a href="https://twitter.com/share?url=https://tousimu.work/funded-simulator&text=' + text + '" rel="nofollow" target="_blank" class="btn twitter rounded-pill btn-sm"><i class="fa fa-twitter"></i> Tweet</a>');
+    return $('.twitter_share').html('<a href="https://twitter.com/share?url=https://tousimu.work/funded-simulator/&text=' + encodeURI(text) + '" rel="nofollow" target="_blank" class="btn twitter rounded-pill btn-sm"><i class="fa fa-twitter"></i> Tweet</a>');
 }
-
 function cal_draw_last_funded_amount() {
     var period = $('#id_last_funded_period')[0].value
     var yearly_yield = $('#id_last_funded_yearly_yield')[0].value
