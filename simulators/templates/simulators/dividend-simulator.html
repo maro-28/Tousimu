@@ -4,7 +4,8 @@
 {% block twitter_card %}
 <meta property="og:url" content="https://tousimu.work/dividend-simulator" />
 <meta property="og:title" content="配当金額シミュレーション｜Tousimu[トウシム]" />
-<meta property="og:description" content="毎月同じ金額を積立投資し配当も再投資した時の、最終年間配当金額のシミュレーション。増配の有無の比較によって増配の力を実感できます。最終年間配当金額から逆算した毎月の投資金額・投資期間・配当利回りも計算可能。" />
+<meta property="og:description"
+  content="毎月同じ金額を積立投資し配当も再投資した時の、最終年間配当金額のシミュレーション。増配の有無の比較によって増配の力を実感できます。最終年間配当金額から逆算した毎月の投資金額・投資期間・配当利回りも計算可能。" />
 {% endblock twitter_card %}
 
 {% block page_name %}
@@ -230,6 +231,11 @@
   </div>
 </div>
 {% endblock tab4_content %}
+
+{% block cal_info %}
+<li class="list-group-item">※ 毎月の投資額に加えて配当金は全て再投資したとして計算。</li>
+{% endblock cal_info %}
+
 
 {% block js %}
 <script type="text/javascript" src="{% static 'simulators/js/high-div.js' %}"></script>

@@ -33,6 +33,7 @@
 
   {% block css %}
   {% endblock css %}
+  <script src="https://kit.fontawesome.com/37a5b4f8e2.js" crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="{% static 'simulators/js/Chart.js' %}"></script>
   <script type="text/javascript" src="{% static 'simulators/js/chartjs-plugin-datalabels.min.js' %}"></script>
@@ -59,7 +60,7 @@
         <a class="nav-item nav-link" href="{% url 'simulators:flat-price-sale' %}">資産取崩しシミュレーション</a>
       </div>
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href='https://twitter.com/maroblog28'>開発者Twitter</a>
+        <a class="nav-item nav-link" href='https://twitter.com/maroblog28'><i class="fa fa-twitter"></i> 開発者Twitter</a>
       </div>
     </div>
   </nav>
@@ -71,7 +72,11 @@
 </body>
 
 <footer class='page-footer font-small mt-5' style='background-color: #F8F9FA'>
-  <div class="footer-copyright text-center py-4">
+  <div class="text-center py-4">
+    <a href="https://maro28.com/" class='text-body'>開発者ブログ</a>｜
+    <a href="{% url 'simulators:terms' %}" class='text-body'>利用規約</a>｜
+    <a href="{% url 'simulators:privacy' %}" class='text-body'>プライバシーポリシー</a>｜
+    <a href='https://twitter.com/maroblog28' class='text-body'>お問い合わせはTwitterから</a></p>
     © 2020 Copyright: Tousimu
   </div>
 </footer>

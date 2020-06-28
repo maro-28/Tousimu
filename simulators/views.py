@@ -15,3 +15,9 @@ class DividendSimulatorView(TemplateView):
 
 class FlatPriceSaleView(TemplateView):
     template_name = 'simulators/flat-price-sale.html'
+
+class TermsView(TemplateView):
+    template_name = 'simulators/terms.html'
+
+class PrivacyView(TemplateView):
+    template_name = 'simulators/privacy.html'

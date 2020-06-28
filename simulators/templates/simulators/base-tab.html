@@ -3,7 +3,6 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'simulators/css/base-tab.css' %}">
-<script src="https://kit.fontawesome.com/37a5b4f8e2.js" crossorigin="anonymous"></script>
 {% endblock css %}
 
 {% block content %}
@@ -120,6 +119,28 @@
         <canvas id="id_forth_tab_radar_chart"></canvas>
       </div>
     </div>
+  </div>
+  <div class='col'>
+    <div class="card">
+      <div class="card-header" role="tab" id="collapseListGroupHeading1">
+        <h6 class="mb-0">
+          <a href="#collapseListGroup1" class="collapsed text-body d-block p-3 m-n3" role="button"
+            data-toggle="collapse" aria-expanded="false" aria-controls="collapseListGroup1">シミュレーションの詳細</a>
+        </h6>
+      </div><!-- /.card-header -->
+      <div class="collapse" role="tabpanel" id="collapseListGroup1" aria-labelledby="collapseListGroupHeading1"
+        aria-expanded="false">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">※ 結果はあくまで入力値に基づいたシミュレーションです。</li>
+          <li class="list-group-item">※ 取引手数料、所得税は控除しておりません。</li>
+          {% block cal_info %}
+          {% endblock cal_info %}
+        </ul>
+        <div class="card-footer">その他シミュレーションの詳細はTwitterからお問い合わせください。</div>
+      </div><!-- /.collapse -->
+    </div>
+  </div>
+  </div>
   </div>
 </main>
 {% endblock content %}
