@@ -1,6 +1,13 @@
 {% extends 'simulators/base-tab.html' %}
 {% load static %}
 
+{% block twitter_card %}
+<meta property="og:url" content="https://tousimu.work/flat-price-sale" />
+<meta property="og:title" content="資産取崩しシミュレーション｜Tousimu[トウシム]" />
+<meta property="og:description"
+  content="毎月同じ金額を取り崩すために必要な総資産額のシミュレーション。投資元本との比較によって複利の力を実感できます。総資産額から逆算した毎月取り崩す金額・取り崩す期間・利回りも計算可能。" />
+{% endblock twitter_card %}
+
 {% block page_name %}
 資産取崩しシミュレーション
 {% endblock page_name %}
