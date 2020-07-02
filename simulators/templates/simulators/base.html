@@ -34,10 +34,8 @@
   {% block css %}
   {% endblock css %}
   <script src="https://kit.fontawesome.com/37a5b4f8e2.js" crossorigin="anonymous"></script>
-
-  <script type="text/javascript" src="{% static 'simulators/js/Chart.js' %}"></script>
-  <script type="text/javascript" src="{% static 'simulators/js/chartjs-plugin-datalabels.min.js' %}"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
   {% if GOOGLE_ANALYTICS_TRACKING_ID %}
   {% include 'simulators/ga.html' %}
   {% endif %}
