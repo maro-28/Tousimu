@@ -1,7 +1,4 @@
 {% load static %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-
 <!DOCTYPE html>
 <html>
 
@@ -22,62 +19,71 @@
   <title>{% block title %}Tousimu｜長期投資シミュレーションツール{% endblock title %}</title>
   <meta name="description" content="{% block description %}長期投資で未来をシミュレーション{% endblock description %}">
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@maroblog28" />
+  <!-- Twitterカード -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@maroblog28">
   {% block twitter_card %}
-  <meta property="og:url" content="https://tousimu.work" />
-  <meta property="og:title" content="Tousimu[トウシム]" />
-  <meta property="og:description" content="長期投資で未来をシミュレーション" />
+  <meta property="og:url" content="https://tousimu.work">
+  <meta property="og:title" content="Tousimu[トウシム]">
+  <meta property="og:description" content="長期投資で未来をシミュレーション">
   {% endblock twitter_card %}
-  <meta property="og:image" content="https://tousimu.work/static/simulators/img/card-thumbnail.jpg" />
+  <meta property="og:image" content="https://tousimu.work/static/simulators/img/card-thumbnail.jpg">
+
+  <!-- Django-Bootstrap -->
+  {% bootstrap_css %}
+  {% bootstrap_javascript jquery='full' %}
 
   {% block css %}
   {% endblock css %}
-  <script src="https://kit.fontawesome.com/37a5b4f8e2.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+
+  <script type="text/javascript" src="https://kit.fontawesome.com/37a5b4f8e2.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+
+  <!-- Google Adsense＆Analytics -->
   {% if GOOGLE_ANALYTICS_TRACKING_ID %}
   {% include 'simulators/ga.html' %}
   {% endif %}
 
 </head>
-<header class='sticky-top'>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url "simulators:index" %}">
-      <img class='img-fluid' src="{% static 'simulators/img/logo.png' %}">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav mr-auto">
-        <a class="nav-item nav-link" href="{% url 'simulators:funded-simulator' %}"
-          id='id_index_invest'>積立金額シミュレーション</a>
-        <a class="nav-item nav-link" href="{% url 'simulators:dividend-simulator' %}">配当金額シミュレーション</a>
-        <a class="nav-item nav-link" href="{% url 'simulators:flat-price-sale' %}">資産取崩しシミュレーション</a>
-      </div>
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href='https://twitter.com/maroblog28'><i class="fa fa-twitter"></i> 開発者Twitter</a>
-      </div>
-    </div>
-  </nav>
-</header>
 
 <body>
+  <header class='sticky-top'>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{% url "simulators:index" %}">
+        <img class='img-fluid' src="{% static 'simulators/img/logo.png' %}">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="{% url 'simulators:funded-simulator' %}"
+            id='id_index_invest'>積立金額シミュレーション</a>
+          <a class="nav-item nav-link" href="{% url 'simulators:dividend-simulator' %}">配当金額シミュレーション</a>
+          <a class="nav-item nav-link" href="{% url 'simulators:flat-price-sale' %}">資産取崩しシミュレーション</a>
+        </div>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href='https://twitter.com/maroblog28'><i class="fa fa-twitter"></i>
+            開発者Twitter</a>
+        </div>
+      </div>
+    </nav>
+  </header>
   {% block content %}
   {% endblock content %}
+  <footer class='page-footer font-small mt-5' style='background-color: #F8F9FA'>
+    <div class="text-center py-4">
+      <a href="https://maro28.com/" class='text-body'>開発者ブログ</a>｜
+      <a href="{% url 'simulators:terms' %}" class='text-body'>利用規約</a>｜
+      <a href="{% url 'simulators:privacy' %}" class='text-body'>プライバシーポリシー</a>｜
+      <a href='https://twitter.com/maroblog28' class='text-body'>お問い合わせはTwitterから</a>
+      © 2020 Copyright: Tousimu
+    </div>
+  </footer>
 </body>
-
-<footer class='page-footer font-small mt-5' style='background-color: #F8F9FA'>
-  <div class="text-center py-4">
-    <a href="https://maro28.com/" class='text-body'>開発者ブログ</a>｜
-    <a href="{% url 'simulators:terms' %}" class='text-body'>利用規約</a>｜
-    <a href="{% url 'simulators:privacy' %}" class='text-body'>プライバシーポリシー</a>｜
-    <a href='https://twitter.com/maroblog28' class='text-body'>お問い合わせはTwitterから</a></p>
-    © 2020 Copyright: Tousimu
-  </div>
-</footer>
 
 {% block js %}
 {% endblock js %}
