@@ -73,11 +73,12 @@
   {% endblock content %}
   <footer class='page-footer font-small mt-5' style='background-color: #F8F9FA'>
     <div class="text-center py-4">
-      <a href="https://maro28.com/" class='text-body'>開発者ブログ</a>｜
-      <a href="{% url 'simulators:terms' %}" class='text-body'>利用規約</a>｜
-      <a href="{% url 'simulators:privacy' %}" class='text-body'>プライバシーポリシー</a>｜
-      <a href='https://twitter.com/maroblog28' class='text-body'>お問い合わせはTwitterから</a>
-      © 2020 Copyright: Tousimu
+      <p><a href="https://maro28.com/" class='text-body'>開発者ブログ</a>｜
+        <a href="{% url 'simulators:terms' %}" class='text-body'>利用規約</a>｜
+        <a href="{% url 'simulators:privacy' %}" class='text-body'>プライバシーポリシー</a>｜
+        <a href='https://twitter.com/maroblog28' class='text-body'>お問い合わせはTwitterから</a>
+      </p>
+      <p>© 2020 Copyright: Tousimu</p>
     </div>
   </footer>
   {% block js %}
