@@ -6,9 +6,6 @@
   <!-- エンコードの指定 -->
   <meta charset="utf-8">
 
-  <!-- IEで常に標準モードで表示させる -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <!-- 電話番号の自動リンク化を無効 -->
   <meta name="format-detection" content="telephone=no">
 
@@ -52,7 +49,7 @@
   <header class='sticky-top'>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="{% url "simulators:index" %}">
-        <img class='img-fluid' src="{% static 'simulators/img/logo.png' %}">
+        <img class='img-fluid' src="{% static 'simulators/img/logo.png' %}" alt='Tousimu Logo'>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,9 +80,8 @@
       © 2020 Copyright: Tousimu
     </div>
   </footer>
+  {% block js %}
+  {% endblock js %}
 </body>
-
-{% block js %}
-{% endblock js %}
 
 </html>
