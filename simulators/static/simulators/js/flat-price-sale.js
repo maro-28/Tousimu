@@ -2,13 +2,13 @@ cal_draw_last_funded_amount()
 
 function param_check(monthly_amount = 100000, period = 20, yearly_yield = 1, last_funded_amount = 1000000) {
     if (period <= 0 || period > 80) {
-        return $('.result').html('取り崩し期間は1~80の整数で入力して下さい！');
+        return $('.result').html('取り崩し期間は<br class="d-inline d-sm-none">1~80の整数で入力して下さい！');
     } else if (0 > yearly_yield || yearly_yield > 99.9) {
-        return $('.result').html('利回りは0~99.9の数値で入力して下さい！');
+        return $('.result').html('利回りは<br class="d-inline d-sm-none">0~99.9の数値で入力して下さい！');
     } else if (monthly_amount < 10000 || monthly_amount > 9999999) {
-        return $('.result').html('毎月取り崩す金額は10,000~9,999,999円の整数で入力して下さい！');
+        return $('.result').html('毎月取り崩す金額は<br class="d-inline d-sm-none">10,000~9,999,999円の整数で入力して下さい！');
     } else if (last_funded_amount < 1000000 || last_funded_amount > 999999999) {
-        return $('.result').html('総資産額は1,000,000~999,999,999円の整数で入力して下さい！');
+        return $('.result').html('総資産額は<br class="d-inline d-sm-none">1,000,000~999,999,999円の整数で入力して下さい！');
     } else {
         return false;
     }
@@ -34,7 +34,7 @@ function cal_draw_last_funded_amount() {
         else {
             var [period, funded_amounts, periods, principals] = cal_period_mobile(monthly_amount, yearly_yield, last_funded_amount);
         }
-        $('.result').html('総資産額 ' + last_funded_amount.toLocaleString() + '円');
+        $('.result').html('総資産額<br class="d-inline d-sm-none">' + last_funded_amount.toLocaleString() + '円');
         var twitter_text = '利回り' + yearly_yield + '%で運用しながら、' + period + '年間、毎月' + Number(monthly_amount).toLocaleString() + '円取り崩すために必要な総資産額は' + last_funded_amount.toLocaleString() + '円です。';
         make_tweet_share(twitter_text);
         drawlinechart(periods, funded_amounts, principals, 'id_first_tab_radar_chart');
@@ -56,7 +56,7 @@ function cal_draw_monthly_amount() {
         else {
             var [nise_period, funded_amounts, periods, principals] = cal_period_mobile(monthly_amount, yearly_yield, last_funded_amount);
         }
-        $('.result').html('毎月取り崩す金額 ' + Math.round(monthly_amount).toLocaleString() + '円');
+        $('.result').html('毎月取り崩す金額<br class="d-inline d-sm-none">' + Math.round(monthly_amount).toLocaleString() + '円');
         var twitter_text = Number(last_funded_amount).toLocaleString() + '円を、利回り' + yearly_yield + '%で運用しながら、' + period + '年間、毎月取り崩せる金額は' + Number(monthly_amount).toLocaleString() + '円です。';
         make_tweet_share(twitter_text);
         drawlinechart(periods, funded_amounts, principals, 'id_second_tab_radar_chart');
@@ -78,11 +78,11 @@ function cal_draw_period() {
             var [period, funded_amounts, periods, principals] = cal_period_mobile(monthly_amount, yearly_yield, last_funded_amount);
         }
         if (period >= 80) {
-            $('.result').html('取り崩し期間 80年以上');
+            $('.result').html('取り崩し期間<br class="d-inline d-sm-none">80年以上');
             var twitter_text = Number(last_funded_amount).toLocaleString() + '円を、利回り' + yearly_yield + '%で運用しながら、毎月' + Number(monthly_amount).toLocaleString() + '円取り崩せる期間は' + period + '年以上です。';
         }
         else {
-            $('.result').html('取り崩し期間 ' + Math.round(period).toLocaleString() + '年');
+            $('.result').html('取り崩し期間<br class="d-inline d-sm-none">' + Math.round(period).toLocaleString() + '年');
             var twitter_text = Number(last_funded_amount).toLocaleString() + '円を、利回り' + yearly_yield + '%で運用しながら、毎月' + Number(monthly_amount).toLocaleString() + '円取り崩せる期間は' + period + '年です。';
         }
         make_tweet_share(twitter_text);

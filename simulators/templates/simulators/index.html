@@ -3,11 +3,12 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'simulators/css/index.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 {% endblock css %}
 
 {% block content %}
 <main class='mt-4'>
-  <h1 class='text-center'>長期投資で未来をシミュレーション</h1>
+  <h1 class='text-center h2'>長期投資で<br class="d-inline d-sm-none">未来をシミュレーション</h1>
   <div class="row mx-2 my-4">
     <div class="col-sm-6">
       <div class='view overlay zoom index-card card mb-3'>
@@ -55,3 +56,6 @@
 </main>
 
 {% endblock content %}
+
+{% block js %}
+{% endblock js %}

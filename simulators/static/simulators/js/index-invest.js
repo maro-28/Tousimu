@@ -2,13 +2,13 @@ cal_draw_last_funded_amount();
 
 function param_check(monthly_amount = 100000, period = 20, yearly_yield = 1, last_funded_amount = 1000000) {
     if (period <= 0 || period > 80) {
-        return $('.result').html('投資期間は1~80の整数で入力して下さい！');
+        return $('.result').html('投資期間は<br class="d-inline d-sm-none">1~80の整数で入力して下さい！');
     } else if (0 > yearly_yield || yearly_yield > 99.9) {
-        return $('.result').html('利回りは0~99.9の数値で入力して下さい！');
+        return $('.result').html('利回りは<br class="d-inline d-sm-none">0~99.9の数値で入力して下さい！');
     } else if (monthly_amount < 1000 || monthly_amount > 9999999) {
-        return $('.result').html('毎月の投資金額は1,000~9,999,999円の整数で入力して下さい！');
+        return $('.result').html('毎月の投資金額は<br class="d-inline d-sm-none">1,000~9,999,999円の整数で入力して下さい！');
     } else if (last_funded_amount < 1000000 || last_funded_amount > 999999999) {
-        return $('.result').html('最終積立金額は1,000,000~999,999,999円の整数で入力して下さい！');
+        return $('.result').html('最終積立金額は<br class="d-inline d-sm-none">1,000,000~999,999,999円の整数で入力して下さい！');
     } else {
         return false;
     }
@@ -31,7 +31,7 @@ function cal_draw_last_funded_amount() {
         else {
             var [periods, funded_amounts, principals, last_funded_amount] = cal_last_funded_amount_mobile(period, yearly_yield, monthly_amount);
         }
-        $('.result').html('最終積立金額 ' + last_funded_amount + '円');
+        $('.result').html('最終積立金額<br class="d-inline d-sm-none">' + last_funded_amount + '円');
         var twitter_text = '毎月' + Number(monthly_amount).toLocaleString() + '円投資し、利回り' + Math.round(yearly_yield * 10) / 10 + '%で運用すると、' + period + '年後の最終積立金額は' + last_funded_amount + '円になります。';
         make_tweet_share(twitter_text)
         drawlinechart(periods, funded_amounts, principals, 'id_first_tab_radar_chart');
@@ -53,7 +53,7 @@ function cal_draw_monthly_amount() {
         else {
             var [periods, funded_amounts, principals] = cal_last_funded_amount_mobile(period, yearly_yield, monthly_amount);
         }
-        $('.result').html('毎月の投資額 ' + Math.round(monthly_amount).toLocaleString() + '円');
+        $('.result').html('毎月の投資額<br class="d-inline d-sm-none">' + Math.round(monthly_amount).toLocaleString() + '円');
         var twitter_text = period + '年間、' + '利回り' + Math.round(yearly_yield * 10) / 10 + '%で運用し、最終積立金額' + Number(last_funded_amount).toLocaleString() + '円を達成するには、毎月' + Math.round(monthly_amount).toLocaleString() + '円投資する必要があります。';
         make_tweet_share(twitter_text)
         drawlinechart(periods, funded_amounts, principals, 'id_second_tab_radar_chart');
@@ -75,7 +75,7 @@ function cal_draw_period() {
         else {
             var [periods, funded_amounts, principals] = cal_last_funded_amount_mobile(period, yearly_yield, monthly_amount);
         }
-        $('.result').html('投資期間 ' + Math.round(period).toLocaleString() + '年');
+        $('.result').html('投資期間<br class="d-inline d-sm-none">' + Math.round(period).toLocaleString() + '年');
         var twitter_text = '毎月' + Math.round(monthly_amount).toLocaleString() + '円投資し、利回り' + Math.round(yearly_yield * 10) / 10 + '%で運用して、最終積立金額' + Number(last_funded_amount).toLocaleString() + '円を達成するのに必要な投資期間は' + period + '年です。';
         make_tweet_share(twitter_text)
         drawlinechart(periods, funded_amounts, principals, 'id_third_tab_radar_chart');
@@ -97,7 +97,7 @@ function cal_draw_yearly_yield() {
         else {
             var [periods, funded_amounts, principals] = cal_last_funded_amount_mobile(period, yearly_yield, monthly_amount);
         }
-        $('.result').html('利回り ' + Math.round(yearly_yield * 10) / 10 + '%');
+        $('.result').html('利回り<br class="d-inline d-sm-none">' + Math.round(yearly_yield * 10) / 10 + '%');
         var twitter_text = period + '年間、毎月' + Math.round(monthly_amount).toLocaleString() + '円投資し、最終積立金額' + Number(last_funded_amount).toLocaleString() + '円を達成するのに必要な利回りは' + Math.round(yearly_yield * 10) / 10 + '%です。';
         make_tweet_share(twitter_text);
         drawlinechart(periods, funded_amounts, principals, 'id_forth_tab_radar_chart');
