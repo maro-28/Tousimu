@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from django.views.generic.base import RedirectView
 
+# リダイレクトでfaviconを表示
 favicon_view = RedirectView.as_view(
     url='static/simulators/img/favicon.ico', permanent=True)
 

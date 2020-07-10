@@ -7,6 +7,8 @@ class StaticViewSitemap(Sitemap):
     静的ページのサイトマップ
     """
     changefreq = "daily"
+
+    # クローラーに対するページの重要度 デフォルトは0.5
     priority = 0.5
 
     def items(self):

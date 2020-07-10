@@ -25,7 +25,6 @@ sitemaps = {
     'static': StaticViewSitemap,
 }
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
