@@ -316,7 +316,7 @@ function drawlinechart(periods, funded_amounts, principals, draw_chart) {
         data: {
             labels: periods,
             datasets: [{
-                label: '複利あり',
+                label: '利回りあり',
                 backgroundColor: 'rgb(255,255,255, 0)',
                 borderColor: 'rgb(233,82,149)',
                 data: funded_amounts,
@@ -327,7 +327,7 @@ function drawlinechart(periods, funded_amounts, principals, draw_chart) {
                 }
             },
             {
-                label: '複利なし',
+                label: '利回りなし',
                 backgroundColor: 'rgb(255,255,255, 0)',
                 borderColor: 'rgb(135,162,219)',
                 data: principals,
