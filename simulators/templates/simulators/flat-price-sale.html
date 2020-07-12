@@ -39,7 +39,7 @@
       <label id="monthly_amount_addon" class="input-group-text" for="id_last_funded_monthly_amount">毎月取り崩す金額</label>
     </div>
     <input type="number" class="form-control text-right" id="id_last_funded_monthly_amount" value="200000" min="0"
-      max="9999999" step="10000" required pattern="\d*" aria-describedby='monthly_amount_addon'>
+      max="9999999" step="10000" required pattern="\d*" aria-describedby='monthly_amount_addon' data-toggle="tooltip" title="取り崩し期間の間、毎月資産から売却する金額">
     <div class="input-group-append">
       <label id="monthly_amount_addon" class="input-group-text" for="id_last_funded_monthly_amount">円</label>
     </div>
@@ -51,7 +51,7 @@
       <label id="period_addon" class="input-group-text" for='id_last_funded_period'>取り崩し期間</label>
     </div>
     <input type="number" class="form-control text-right" value="20" min="0" max="99" required id="id_last_funded_period"
-      pattern="\d*" aria-describedby='period_addon'>
+      pattern="\d*" aria-describedby='period_addon' data-toggle="tooltip" title="総資産から毎月同じ金額を取り崩す期間">
     <div class="input-group-append">
       <label id="period_addon" class="input-group-text" for='id_last_funded_period'>年</label>
     </div>
@@ -63,7 +63,7 @@
       <label id="yearly_yield_addon" class="input-group-text" for="id_last_funded_yearly_yield">利回り</label>
     </div>
     <input type="number" class="form-control text-right" id="id_last_funded_yearly_yield" value="7" min="-99.9"
-      max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon'>
+      max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon' data-toggle="tooltip" title="保有している資産に期待する年間の利回り">
     <div class="input-group-append">
       <label id="yearly_yield_addon" class="input-group-text" for="id_last_funded_yearly_yield">%</label>
     </div>
@@ -78,7 +78,7 @@
       <label id="period_addon" class="input-group-text" for="id_monthly_amount_period">取り崩し期間</label>
     </div>
     <input type="number" class="form-control text-right" value="20" min="0" max="99" required
-      id="id_monthly_amount_period" pattern="\d*" aria-describedby='period_addon'>
+      id="id_monthly_amount_period" pattern="\d*" aria-describedby='period_addon' data-toggle="tooltip" title="総資産から毎月同じ金額を取り崩す期間">
     <div class="input-group-append">
       <label id="period_addon" class="input-group-text" for="id_monthly_amount_period">年</label>
     </div>
@@ -90,7 +90,7 @@
       <label id="yearly_yield_addon" class="input-group-text" for="id_monthly_amount_yearly_yield">利回り</label>
     </div>
     <input type="number" class="form-control text-right" id="id_monthly_amount_yearly_yield" value="7" min="-99.9"
-      max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon'>
+      max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon' data-toggle="tooltip" title="保有している資産に期待する年間の利回り">
     <div class="input-group-append">
       <label id="yearly_yield_addon" class="input-group-text" for="id_monthly_amount_yearly_yield">%</label>
     </div>
@@ -102,7 +102,7 @@
       <label id="last_funded_addon" class="input-group-text" for="id_monthly_amount_last_funded_amount">総資産額</label>
     </div>
     <input type="number" class="form-control text-right" id="id_monthly_amount_last_funded_amount" value="25000000"
-      min="0" max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon'>
+      min="0" max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon' data-toggle="tooltip" title="毎月取り崩していく資産の保有額">
     <div class="input-group-append">
       <label id="last_funded_addon" class="input-group-text" for="id_monthly_amount_last_funded_amount">円</label>
     </div>
@@ -117,7 +117,7 @@
       <label id="monthly_amount_addon" class="input-group-text" for="id_period_monthly_amount">毎月取り崩す金額</label>
     </div>
     <input type="number" class="form-control text-right" value="200000" min="0" max="99999999" step="10000" required
-      id="id_period_monthly_amount" pattern="\d*" aria-describedby='monthly_amount_addon'>
+      id="id_period_monthly_amount" pattern="\d*" aria-describedby='monthly_amount_addon' data-toggle="tooltip" title="取り崩し期間の間、毎月資産から売却する金額">
     <div class="input-group-append">
       <label id="monthly_amount_addon" class="input-group-text" for="id_period_monthly_amount">円</label>
     </div>
@@ -129,7 +129,7 @@
       <label id="yearly_yield_addon" class="input-group-text" for="id_period_yearly_yield">利回り</label>
     </div>
     <input type="number" class="form-control text-right" id="id_period_yearly_yield" value="7" min="-99.9" max="99.9"
-      step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon'>
+      step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon' data-toggle="tooltip" title="保有している資産に期待する年間の利回り">
     <div class="input-group-append">
       <label id="yearly_yield_addon" class="input-group-text" for="id_period_yearly_yield">%</label>
     </div>
@@ -141,7 +141,7 @@
       <label id="last_funded_addon" class="input-group-text" for="id_period_last_funded_amount">総資産額</label>
     </div>
     <input type="number" class="form-control text-right" id="id_period_last_funded_amount" value="25000000" min="0"
-      max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon'>
+      max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon' data-toggle="tooltip" title="毎月取り崩していく資産の保有額">
     <div class="input-group-append">
       <label id="last_funded_addon" class="input-group-text" for="id_period_last_funded_amount">円</label>
     </div>
@@ -156,7 +156,7 @@
       <label id="monthly_amount_addon" class="input-group-text" for="id_yearly_yield_monthly_amount">毎月取り崩す金額</label>
     </div>
     <input type="number" class="form-control text-right" value="200000" min="0" max="99999999" step="10000" required
-      id="id_yearly_yield_monthly_amount" pattern="\d*" aria-describedby='monthly_amount_addon'>
+      id="id_yearly_yield_monthly_amount" pattern="\d*" aria-describedby='monthly_amount_addon' data-toggle="tooltip" title="取り崩し期間の間、毎月資産から売却する金額">
     <div class="input-group-append">
       <label id="monthly_amount_addon" class="input-group-text" for="id_yearly_yield_monthly_amount">円</label>
     </div>
@@ -165,10 +165,10 @@
 <div class='form-group col-sm-6 col-lg-4'>
   <div class="input-group">
     <div class="input-group-prepend">
-      <label id="period_addon" class="input-group-text" for="id_yearly_yield_period">投資期間</label>
+      <label id="period_addon" class="input-group-text" for="id_yearly_yield_period">取り崩し期間</label>
     </div>
     <input type="number" class="form-control text-right" id="id_yearly_yield_period" value="20" min="-99.9" max="80"
-      required pattern="\d*" aria-describedby='period_addon'>
+      required pattern="\d*" aria-describedby='period_addon' data-toggle="tooltip" title="総資産から毎月同じ金額を取り崩す期間">
     <div class="input-group-append">
       <label id="period_addon" class="input-group-text" for="id_yearly_yield_period">年</label>
     </div>
@@ -180,7 +180,7 @@
       <label id="last_funded_addon" class="input-group-text" for="id_yearly_yield_last_funded_amount">総資産額</label>
     </div>
     <input type="number" class="form-control text-right" id="id_yearly_yield_last_funded_amount" value="25000000"
-      min="0" max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon'>
+      min="0" max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon' data-toggle="tooltip" title="毎月取り崩していく資産の保有額">
     <div class="input-group-append">
       <label id="last_funded_addon" class="input-group-text" for="id_yearly_yield_last_funded_amount">円</label>
     </div>
@@ -189,5 +189,6 @@
 {% endblock tab4_content %}
 
 {% block js %}
+<script type="text/javascript" src="{% static 'simulators/js/base-tab.js' %}"></script>
 <script type="text/javascript" src="{% static 'simulators/js/flat-price-sale.js' %}"></script>
 {% endblock js %}
