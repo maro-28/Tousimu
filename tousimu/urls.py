@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
+from .views import ContactFormView, ContactResultView
 
 from .sitemaps import (
     StaticViewSitemap,
@@ -27,6 +28,8 @@ sitemaps = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('contact/', ContactFormView.as_view(), name='contact_form'),
+    path('contact/result/', ContactResultView.as_view(), name='contact_result'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('', include('simulators.urls'))
 ]

@@ -14,7 +14,8 @@
 
   <!-- サイトのタイトル＆説明 -->
   <title>{% block title %}Tousimu{% endblock title %}</title>
-  <meta name="description" content="{% block description %}Tousimu[トウシム]は、シンプルで簡単にすぐ使える長期投資シミュレーションです。{% endblock description %}">
+  <meta name="description"
+    content="{% block description %}Tousimu[トウシム]は、シンプルで簡単にすぐ使える長期投資シミュレーションです。{% endblock description %}">
 
   <!-- Twitterカード -->
   <meta name="twitter:card" content="summary_large_image">
@@ -74,12 +75,9 @@
   <footer class='page-footer font-small mt-5' style='background-color: #F8F9FA'>
     <div class="text-center py-4">
       <p>
-        <a href="https://maro28.com/" class='text-body'>開発者ブログ</a>｜
         <a href="{% url 'simulators:terms' %}" class='text-body'>利用規約</a>｜
-        <a href="{% url 'simulators:privacy' %}" class='text-body'>プライバシーポリシー</a>
-      </p>
-      <p>
-        <a href='https://twitter.com/maroblog28' class='text-body'>お問い合わせはTwitterから</a>
+        <a href="{% url 'simulators:privacy' %}" class='text-body'>プライバシーポリシー</a>｜
+        <a href="{% url 'contact_form' %}" class='text-body'>お問い合わせ</a>
       </p>
       <p>© 2020 Copyright: Tousimu</p>
     </div>
