@@ -9,19 +9,31 @@ input[type="number"] {
 }
 
 .twitter:hover {
-  background-color: #1397D8;
-  color:#fff;
+  background-color: #1DA1F2;
+  color: #fff;
 }
 
 .twitter {
-  border-color: #008DDE;
-  color: #008DDE;
+  border-color: #1DA1F2;
+  color: #1DA1F2;
 }
 
 .twitter:focus {
   outline: none !important;
+  box-shadow: none !important;
 }
 
-.twitter:focus {
-  box-shadow:none !important;
- }
+.download {
+  border-color: #EF6A1C;
+  color: #EF6A1C;
+}
+
+.download:hover {
+  background-color: #EF6A1C;
+  color: #fff;
+}
+
+.download:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
