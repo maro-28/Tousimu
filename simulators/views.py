@@ -23,3 +23,6 @@ class TermsView(TemplateView):
 
 class PrivacyView(TemplateView):
     template_name = 'simulators/privacy.html'
+
+class InfoView(TemplateView):
+    template_name = 'simulators/info.html'

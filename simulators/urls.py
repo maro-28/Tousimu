@@ -19,5 +19,7 @@ urlpatterns = [
          name="terms"),
     path('privacy', views.PrivacyView.as_view(),
          name="privacy"),
+    path('info', views.InfoView.as_view(),
+         name="info"),
     path('favicon.ico', favicon_view, name="favicon"),
 ]
