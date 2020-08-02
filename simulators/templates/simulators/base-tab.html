@@ -15,10 +15,8 @@
     </div>
     <div class='row justify-content-center'>
       <div class='col-xl-10'>
-        <p>積立金額シミュレーションでは、毎月の投資金額・投資期間・利回りから将来の最終積立金額を計算可能。<br>
-          経過年月ごとの投資元本と積立金額の比較で、複利の力の大きさを感じることができます！</p>
-        <p>さらに目標とする最終積立金額から、必要な毎月の投資金額・投資期間・利回りの逆算も可能！<br>
-          積立投資をする銘柄の選定や、投資金額の決定にご活用ください！</p>
+        {% block explanation %}
+        {% endblock explanation %}
       </div>
     </div>
     <div class='row justify-content-center'>
@@ -51,8 +49,12 @@
       <div class='col-xl-10'>
         <div class="tab-content my-2">
           <div id="canva1" class="tab-pane fade show active container-fluid">
-            <div class='row'>
-              <div class='col text-center'>
+            <div class='row pt-2'>
+              <div class='col-xl-8'>
+                {% block tab1_explanation %}
+                {% endblock tab1_explanation %}
+              </div>
+              <div class='col-xl-4 text-center'>
                 <div class="twitter_share d-inline">
                 </div>
                 <div class='d-inline'>
@@ -81,8 +83,12 @@
             </div>
           </div>
           <div id="canva2" class="tab-pane fade container-fluid">
-            <div class='row'>
-              <div class='col text-center'>
+            <div class='row pt-2'>
+              <div class='col-xl-8'>
+                {% block tab2_explanation %}
+                {% endblock tab2_explanation %}
+              </div>
+              <div class='col-xl-4 text-center'>
                 <div class="twitter_share d-inline">
                 </div>
                 <div class='d-inline'>
@@ -111,8 +117,12 @@
             </div>
           </div>
           <div id="canva3" class="tab-pane fade container-fluid">
-            <div class='row'>
-              <div class='col text-center'>
+            <div class='row pt-2'>
+              <div class='col-xl-8'>
+                {% block tab3_explanation %}
+                {% endblock tab3_explanation %}
+              </div>
+              <div class='col-xl-4 text-center'>
                 <div class="twitter_share d-inline">
                 </div>
                 <div class='d-inline'>
@@ -141,8 +151,12 @@
             </div>
           </div>
           <div id="canva4" class="tab-pane fade container-fluid">
-            <div class='row'>
-              <div class='col text-center'>
+            <div class='row pt-2'>
+              <div class='col-xl-8'>
+                {% block tab4_explanation %}
+                {% endblock tab4_explanation %}
+              </div>
+              <div class='col-xl-4 text-center'>
                 <div class="twitter_share d-inline">
                 </div>
                 <div class='d-inline'>

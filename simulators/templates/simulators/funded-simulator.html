@@ -3,13 +3,22 @@
 
 {% block title %}積立金額シミュレーション{% endblock title %}
 
-{% block description %}毎月同じ金額を積立投資した時の、最終積立金額のシミュレーション。投資元本との比較によって複利の力を実感できます。最終積立金額から逆算した毎月の投資金額・投資期間・利回りも計算可能。{% endblock description %}
+{% block description %}積立金額シミュレーションでは、毎月の投資金額・投資期間・利回りから将来の最終積立金額を計算可能。経過年月ごとの投資元本と積立金額の比較で、複利の力の大きさを感じることができます！さらに目標とする最終積立金額から、必要な毎月の投資金額・投資期間・利回りの逆算も可能！積立投資をする銘柄の選定や、投資金額の決定にご活用ください！{% endblock description %}
+
+{% block explanation %}
+<p>積立金額シミュレーションでは、<br class="d-inline d-sm-none">毎月の投資金額・投資期間・利回りから<br class="d-inline d-sm-none">将来の<span
+    class='h5 font-pink font-weight-bold'>最終積立金額</span>を計算可能。<br>
+  経過年月ごとの投資元本と積立金額の比較で、<br class="d-inline d-sm-none"><span class='font-weight-bold'>複利の力</span>の大きさを感じることができます！
+</p>
+<p>さらに目標とする最終積立金額から、<br class="d-inline d-sm-none">必要な毎月の投資金額・投資期間・利回りの逆算も可能！<br>
+  積立投資をする銘柄の選定や、<br class="d-inline d-sm-none">投資金額の決定にご活用ください！</p>
+{% endblock explanation %}
 
 {% block twitter_card %}
 <meta property="og:url" content="https://tousimu.work/funded-simulator" />
 <meta property="og:title" content="積み立て金額シミュレーション｜Tousimu[トウシム]" />
 <meta property="og:description"
-  content="毎月同じ金額を積立投資した時の、最終積立金額のシミュレーション。投資元本との比較によって複利の力を実感できます。最終積立金額から逆算した毎月の投資金額・投資期間・利回りも計算可能。" />
+  content="積立金額シミュレーションでは、毎月の投資金額・投資期間・利回りから将来の最終積立金額を計算可能。経過年月ごとの投資元本と積立金額の比較で、複利の力の大きさを感じることができます！さらに目標とする最終積立金額から、必要な毎月の投資金額・投資期間・利回りの逆算も可能！積立投資をする銘柄の選定や、投資金額の決定にご活用ください！" />
 {% endblock twitter_card %}
 
 {% block page_name %}
@@ -32,7 +41,25 @@
 <span class='h4 font-weight-bold'>利回り</span>を計算する！
 {% endblock tab4 %}
 
+{% block tab1_explanation %}
+毎月の投資金額・投資期間・利回りを入力してください。<br>
+すぐに最終積立金額が計算されます！
+{% endblock tab1_explanation %}
+
 {% block tab1_content %}
+<div class="form-group col-sm-6 col-lg-4">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <label id="monthly_amount_addon" class="input-group-text" for="id_last_funded_monthly_amount">毎月の投資金額</label>
+    </div>
+    <input type="number" class="form-control text-right" id="id_last_funded_monthly_amount" value="33333" min="0"
+      max="9999999" step="10000" required pattern="\d*" aria-describedby='monthly_amount_addon' data-toggle="tooltip"
+      title="最終積立金額に到達するまでの期間に、毎月投資する金額">
+    <div class="input-group-append">
+      <label id="monthly_amount_addon" class="input-group-text" for="id_last_funded_monthly_amount">円</label>
+    </div>
+  </div>
+</div>
 <div class='form-group col-sm-6 col-lg-4'>
   <div class="input-group">
     <div class="input-group-prepend">
@@ -58,22 +85,27 @@
     </div>
   </div>
 </div>
+{% endblock tab1_content %}
+
+{% block tab2_explanation %}
+目標とする最終積立金額と投資期間・利回りを入力してください。<br>
+目標達成に必要な毎月の投資金額が、すぐに計算されます！
+{% endblock tab2_explanation %}
+
+{% block tab2_content %}
 <div class="form-group col-sm-6 col-lg-4">
   <div class="input-group">
     <div class="input-group-prepend">
-      <label id="monthly_amount_addon" class="input-group-text" for="id_last_funded_monthly_amount">毎月の投資金額</label>
+      <label id="last_funded_addon" class="input-group-text" for="id_monthly_amount_last_funded_amount">最終積立金額</label>
     </div>
-    <input type="number" class="form-control text-right" id="id_last_funded_monthly_amount" value="33333" min="0"
-      max="9999999" step="10000" required pattern="\d*" aria-describedby='monthly_amount_addon' data-toggle="tooltip"
-      title="最終積立金額に到達するまでの期間に、毎月投資する金額">
+    <input type="number" class="form-control text-right" id="id_monthly_amount_last_funded_amount" value="20000000"
+      min="0" max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon'
+      data-toggle="tooltip" title="目標とする最終的な投資元本と運用益の合計金額">
     <div class="input-group-append">
-      <label id="monthly_amount_addon" class="input-group-text" for="id_last_funded_monthly_amount">円</label>
+      <label id="last_funded_addon" class="input-group-text" for="id_monthly_amount_last_funded_amount">円</label>
     </div>
   </div>
 </div>
-{% endblock tab1_content %}
-
-{% block tab2_content %}
 <div class='form-group col-sm-6 col-lg-4'>
   <div class="input-group">
     <div class="input-group-prepend">
@@ -100,22 +132,27 @@
     </div>
   </div>
 </div>
+{% endblock tab2_content %}
+
+{% block tab3_explanation %}
+目標とする最終積立金額と毎月の投資金額・利回りを入力してください。<br>
+目標達成に必要な投資期間が、すぐに計算されます！
+{% endblock tab3_explanation %}
+
+{% block tab3_content %}
 <div class="form-group col-sm-6 col-lg-4">
   <div class="input-group">
     <div class="input-group-prepend">
-      <label id="last_funded_addon" class="input-group-text" for="id_monthly_amount_last_funded_amount">最終積立金額</label>
+      <label id="last_funded_addon" class="input-group-text" for="id_period_last_funded_amount">最終積立金額</label>
     </div>
-    <input type="number" class="form-control text-right" id="id_monthly_amount_last_funded_amount" value="20000000"
-      min="0" max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon'
-      data-toggle="tooltip" title="目標とする最終的な投資元本と運用益の合計金額">
+    <input type="number" class="form-control text-right" id="id_period_last_funded_amount" value="20000000" min="0"
+      max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon' data-toggle="tooltip"
+      title="目標とする最終的な投資元本と運用益の合計金額">
     <div class="input-group-append">
-      <label id="last_funded_addon" class="input-group-text" for="id_monthly_amount_last_funded_amount">円</label>
+      <label id="last_funded_addon" class="input-group-text" for="id_period_last_funded_amount">円</label>
     </div>
   </div>
 </div>
-{% endblock tab2_content %}
-
-{% block tab3_content %}
 <div class='form-group col-sm-6 col-lg-4'>
   <div class="input-group">
     <div class="input-group-prepend">
@@ -141,22 +178,27 @@
     </div>
   </div>
 </div>
+{% endblock tab3_content %}
+
+{% block tab4_explanation %}
+目標とする最終積立金額と毎月の投資金額・投資期間を入力してください。<br>
+目標達成に必要な利回りが、すぐに計算されます！
+{% endblock tab4_explanation %}
+
+{% block tab4_content %}
 <div class="form-group col-sm-6 col-lg-4">
   <div class="input-group">
     <div class="input-group-prepend">
-      <label id="last_funded_addon" class="input-group-text" for="id_period_last_funded_amount">最終積立金額</label>
+      <label id="last_funded_addon" class="input-group-text" for="id_yearly_yield_last_funded_amount">最終積立金額</label>
     </div>
-    <input type="number" class="form-control text-right" id="id_period_last_funded_amount" value="20000000" min="0"
-      max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon' data-toggle="tooltip"
-      title="目標とする最終的な投資元本と運用益の合計金額">
+    <input type="number" class="form-control text-right" id="id_yearly_yield_last_funded_amount" value="20000000"
+      min="0" max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon'
+      data-toggle="tooltip" title="目標とする最終的な投資元本と運用益の合計金額">
     <div class="input-group-append">
-      <label id="last_funded_addon" class="input-group-text" for="id_period_last_funded_amount">円</label>
+      <label id="last_funded_addon" class="input-group-text" for="id_yearly_yield_last_funded_amount">円</label>
     </div>
   </div>
 </div>
-{% endblock tab3_content %}
-
-{% block tab4_content %}
 <div class='form-group col-sm-6 col-lg-4'>
   <div class="input-group">
     <div class="input-group-prepend">
@@ -179,19 +221,6 @@
       required pattern="\d*" aria-describedby='period_addon' data-toggle="tooltip" title="現在から最終積立金額に到達するまでの期間">
     <div class="input-group-append">
       <label id="period_addon" class="input-group-text" for="id_yearly_yield_period">年</label>
-    </div>
-  </div>
-</div>
-<div class="form-group col-sm-6 col-lg-4">
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <label id="last_funded_addon" class="input-group-text" for="id_yearly_yield_last_funded_amount">最終積立金額</label>
-    </div>
-    <input type="number" class="form-control text-right" id="id_yearly_yield_last_funded_amount" value="20000000"
-      min="0" max="999999999" step="10000000" required pattern="\d*" aria-describedby='last_funded_addon'
-      data-toggle="tooltip" title="目標とする最終的な投資元本と運用益の合計金額">
-    <div class="input-group-append">
-      <label id="last_funded_addon" class="input-group-text" for="id_yearly_yield_last_funded_amount">円</label>
     </div>
   </div>
 </div>

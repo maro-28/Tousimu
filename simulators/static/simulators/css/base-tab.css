@@ -37,3 +37,11 @@ input[type="number"] {
   outline: none !important;
   box-shadow: none !important;
 }
+
+.font-pink {
+  color: #EA5698;
+}
+
+.font-skyblue{
+  color: #87A2DB;
+}
