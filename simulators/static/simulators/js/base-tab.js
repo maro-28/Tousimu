@@ -1,3 +1,6 @@
+// 共通関数
+window.functionLib = window.functionLib || {};
+
 $('[data-toggle="tooltip"]').tooltip();
 
 $('#ss-picture1').hover(make_ss1);
@@ -56,3 +59,15 @@ function make_ss4() {
     document.getElementById('ss-picture4').setAttribute("href", picture);
   });
 }
+function make_share_button(sns, text, ref_url) {
+  if (sns == 'line') {
+    var sns_url = 'timeline.line.me/social-plugin';
+    var sns_text = 'LINE';
+  }
+  else {
+    var sns_url = 'twitter.com';
+    var sns_text = 'Tweet';
+  }
+  return $('.' + sns + '_share').html('<a href="https://' + sns_url + '/share?url=https://tousimu.work/' + ref_url + '&text=' + encodeURI(text) + '" rel="nofollow" target="_blank" class="btn ' + sns + ' rounded-pill btn-sm"><i class="fab fa-' + sns + '"></i> ' + sns_text + '</a>');
+};
+window.functionLib.make_share_button = make_share_button;
