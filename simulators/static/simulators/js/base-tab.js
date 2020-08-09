@@ -59,6 +59,7 @@ function make_ss4() {
     document.getElementById('ss-picture4').setAttribute("href", picture);
   });
 }
+// SNSのシェアボタンを作成
 function make_share_button(sns, text, ref_url) {
   if (sns == 'line') {
     var sns_url = 'timeline.line.me/social-plugin';
