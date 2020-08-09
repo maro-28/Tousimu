@@ -17,6 +17,10 @@ function param_check(monthly_amount = 100000, period = 20, yearly_yield = 1, las
 function make_tweet_share(text) {
     return $('.twitter_share').html('<a href="https://twitter.com/share?url=https://tousimu.work/funded-simulator/&text=' + encodeURI(text) + '" rel="nofollow" target="_blank" class="btn twitter rounded-pill btn-sm"><i class="fa fa-twitter"></i> Tweet</a>');
 }
+function make_line_share(text) {
+    return $('.line_share').html('<a href="https://timeline.line.me/social-plugin/share?url=https://tousimu.work/funded-simulator/&text=' + encodeURI(text) + '" rel="nofollow" target="_blank" class="btn twitter rounded-pill btn-sm"><i class="fab fa-line"></i> LINE</a>');
+}
+
 function cal_draw_last_funded_amount() {
     var period = $('#id_last_funded_period')[0].value
     var yearly_yield = $('#id_last_funded_yearly_yield')[0].value
@@ -34,6 +38,7 @@ function cal_draw_last_funded_amount() {
         $('.result').html('最終積立金額<br class="d-inline d-sm-none">' + last_funded_amount + '円');
         var twitter_text = '毎月' + Number(monthly_amount).toLocaleString() + '円投資し、利回り' + Math.round(yearly_yield * 10) / 10 + '%で運用すると、' + period + '年後の最終積立金額は' + last_funded_amount + '円になります。';
         make_tweet_share(twitter_text)
+        make_line_share(twitter_text)
         drawlinechart(periods, funded_amounts, principals, 'id_first_tab_radar_chart');
     }
 }
