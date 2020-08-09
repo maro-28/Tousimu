@@ -21,8 +21,7 @@ function cal_draw_last_dividend() {
     var yearly_yield = $('#id_last_dividend_yearly_yield')[0].value
     var increase_rate = $('#id_last_dividend_increase_rate')[0].value
     var monthly_amount = $('#id_last_dividend_monthly_amount')[0].value
-    $('.twitter_share').html('');
-    $('.line_share').html('');
+    $('.share_button').html('');
     param_check(monthly_amount, period, yearly_yield, increase_rate, last_dividend);
     if (!param_check(monthly_amount, period, yearly_yield, increase_rate, last_dividend)) {
         var windowWidth = window.innerWidth;
@@ -36,6 +35,7 @@ function cal_draw_last_dividend() {
         var sns_text = '毎月' + Number(monthly_amount).toLocaleString() + '円投資し、配当利回り' + yearly_yield + '%、増配率' + increase_rate + '%で運用すると、' + period + '年後の年間配当金額は' + last_dividend.toLocaleString() + '円になります。'
         window.functionLib.make_share_button('twitter', sns_text, 'dividend-simulator');
         window.functionLib.make_share_button('line', sns_text, 'dividend-simulator');
+        window.functionLib.make_share_button('facebook', sns_text, 'funded-simulator');
         drawbarchart(periods, yields, inc_yields, 'id_first_tab_radar_chart');
     }
 }
@@ -45,8 +45,7 @@ function cal_draw_monthly_amount() {
     var period = $('#id_monthly_amount_period')[0].value;
     var yearly_yield = $('#id_monthly_amount_yearly_yield')[0].value;
     var increase_rate = $('#id_monthly_amount_increase_rate')[0].value;
-    $('.twitter_share').html('');
-    $('.line_share').html('');
+    $('.share_button').html('');
     param_check(monthly_amount, period, yearly_yield, increase_rate, last_dividend);
     if (!param_check(monthly_amount, period, yearly_yield, increase_rate, last_dividend)) {
         var monthly_amount = cal_monthly_amount(last_dividend, period, yearly_yield, increase_rate);
@@ -61,6 +60,7 @@ function cal_draw_monthly_amount() {
         var sns_text = period + '年間、配当利回り' + yearly_yield + '%、増配率' + increase_rate + '%で運用し、年間配当金額' + Number(last_dividend).toLocaleString() + '円を達成するには、毎月' + Math.round(monthly_amount).toLocaleString() + '円の投資が必要です。';
         window.functionLib.make_share_button('twitter', sns_text, 'dividend-simulator');
         window.functionLib.make_share_button('line', sns_text, 'dividend-simulator');
+        window.functionLib.make_share_button('facebook', sns_text, 'funded-simulator');
         drawbarchart(periods, yields, inc_yields, 'id_second_tab_radar_chart');
     }
 
@@ -71,8 +71,7 @@ function cal_draw_period() {
     var monthly_amount = Number($('#id_period_monthly_amount')[0].value);
     var yearly_yield = $('#id_period_yearly_yield')[0].value;
     var increase_rate = $('#id_period_increase_rate')[0].value;
-    $('.twitter_share').html('');
-    $('.line_share').html('');
+    $('.share_button').html('');
     param_check(monthly_amount, period, yearly_yield, increase_rate, last_dividend);
     if (!param_check(monthly_amount, period, yearly_yield, increase_rate, last_dividend)) {
         var period = cal_period(last_dividend, monthly_amount, yearly_yield, increase_rate);
@@ -87,6 +86,7 @@ function cal_draw_period() {
         var sns_text = '毎月' + monthly_amount.toLocaleString() + '円投資し、配当利回り' + yearly_yield + '%、増配率' + increase_rate + '%で運用して、年間配当金額' + Number(last_dividend).toLocaleString() + '円を達成するには' + Math.round(period).toLocaleString() + '年必要です。';
         window.functionLib.make_share_button('twitter', sns_text, 'dividend-simulator');
         window.functionLib.make_share_button('line', sns_text, 'dividend-simulator');
+        window.functionLib.make_share_button('facebook', sns_text, 'funded-simulator');
         drawbarchart(periods, yields, inc_yields, 'id_third_tab_radar_chart');
     }
 }
@@ -96,8 +96,7 @@ function cal_draw_yearly_yield() {
     var period = $('#id_yearly_yield_period')[0].value
     var last_dividend = $('#id_yearly_yield_last_dividend')[0].value
     var increase_rate = $('#id_yearly_yield_increase_rate')[0].value;
-    $('.twitter_share').html('');
-    $('.line_share').html('');
+    $('.share_button').html('');
     param_check(monthly_amount, period, yearly_yield, increase_rate, last_dividend);
     if (!param_check(monthly_amount, period, yearly_yield, increase_rate, last_dividend)) {
         var yearly_yield = cal_yearly_yield(last_dividend, period, monthly_amount, increase_rate);
@@ -112,6 +111,7 @@ function cal_draw_yearly_yield() {
         var sns_text = period + '年間、毎月' + monthly_amount.toLocaleString() + '円投資し、増配率' + increase_rate + '%で運用して、年間配当金額' + Number(last_dividend).toLocaleString() + '円を達成するのに必要な配当利回りは' + Math.round(yearly_yield * 10) / 10 + '%です。'
         window.functionLib.make_share_button('twitter', sns_text, 'dividend-simulator');
         window.functionLib.make_share_button('line', sns_text, 'dividend-simulator');
+        window.functionLib.make_share_button('facebook', sns_text, 'funded-simulator');
         drawbarchart(periods, yields, inc_yields, 'id_forth_tab_radar_chart');
     }
 }

@@ -37,6 +37,20 @@ input[type="number"] {
   outline: none !important;
   box-shadow: none !important;
 }
+.facebook:hover {
+  background-color: #3B5998;
+  color: #fff;
+}
+
+.facebook {
+  border-color: #3B5998;
+  color: #3B5998;
+}
+
+.facebook:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
 .download {
   border-color: #EF6A1C;
