@@ -23,6 +23,21 @@ input[type="number"] {
   box-shadow: none !important;
 }
 
+.line:hover {
+  background-color: #00B900;
+  color: #fff;
+}
+
+.line {
+  border-color: #00B900;
+  color: #00B900;
+}
+
+.line:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 .download {
   border-color: #EF6A1C;
   color: #EF6A1C;

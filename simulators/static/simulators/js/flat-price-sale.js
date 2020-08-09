@@ -17,12 +17,15 @@ function param_check(monthly_amount = 100000, period = 20, yearly_yield = 1, las
 function make_tweet_share(text) {
     return $('.twitter_share').html('<a href="https://twitter.com/share?url=https://tousimu.work/flat-price-sale&text=' + encodeURI(text) + '" rel="nofollow" target="_blank" class="btn twitter rounded-pill btn-sm"><i class="fa fa-twitter"></i> Tweet</a>');
 }
-
+function make_line_share(text) {
+    return $('.line_share').html('<a href="https://timeline.line.me/social-plugin/share?url=https://tousimu.work/flat-price-sale&text=' + encodeURI(text) + '" rel="nofollow" target="_blank" class="btn line rounded-pill btn-sm"><i class="fab fa-line"></i> LINE</a>');
+}
 function cal_draw_last_funded_amount() {
     var monthly_amount = $('#id_last_funded_monthly_amount')[0].value
     var period = $('#id_last_funded_period')[0].value
     var yearly_yield = $('#id_last_funded_yearly_yield')[0].value
     $('.twitter_share').html('');
+    $('.line_share').html('');
     param_check(monthly_amount, period, yearly_yield, last_funded_amount)
     if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount)) {
         var last_funded_amount = cal_last_funded_amount(monthly_amount, period, yearly_yield);
@@ -37,6 +40,7 @@ function cal_draw_last_funded_amount() {
         $('.result').html('総資産額<br class="d-inline d-sm-none">' + last_funded_amount.toLocaleString() + '円');
         var twitter_text = '利回り' + yearly_yield + '%で運用しながら、' + period + '年間、毎月' + Number(monthly_amount).toLocaleString() + '円取り崩すために必要な総資産額は' + last_funded_amount.toLocaleString() + '円です。';
         make_tweet_share(twitter_text);
+        make_line_share(twitter_text);
         drawlinechart(periods, funded_amounts, principals, 'id_first_tab_radar_chart');
     }
 }
@@ -46,6 +50,7 @@ function cal_draw_monthly_amount() {
     var yearly_yield = $('#id_monthly_amount_yearly_yield')[0].value
     var last_funded_amount = $('#id_monthly_amount_last_funded_amount')[0].value
     $('.twitter_share').html('');
+    $('.line_share').html('');
     param_check(monthly_amount, period, yearly_yield, last_funded_amount)
     if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount)) {
         var monthly_amount = cal_monthly_amount(period, yearly_yield, last_funded_amount);
@@ -59,6 +64,7 @@ function cal_draw_monthly_amount() {
         $('.result').html('毎月取り崩す金額<br class="d-inline d-sm-none">' + Math.round(monthly_amount).toLocaleString() + '円');
         var twitter_text = Number(last_funded_amount).toLocaleString() + '円を、利回り' + yearly_yield + '%で運用しながら、' + period + '年間、毎月取り崩せる金額は' + Number(monthly_amount).toLocaleString() + '円です。';
         make_tweet_share(twitter_text);
+        make_line_share(twitter_text);
         drawlinechart(periods, funded_amounts, principals, 'id_second_tab_radar_chart');
     }
 }
@@ -68,6 +74,7 @@ function cal_draw_period() {
     var yearly_yield = $('#id_period_yearly_yield')[0].value
     var last_funded_amount = $('#id_period_last_funded_amount')[0].value
     $('.twitter_share').html('');
+    $('.line_share').html('');
     param_check(monthly_amount, period, yearly_yield, last_funded_amount)
     if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount)) {
         var windowWidth = window.innerWidth;
@@ -86,6 +93,7 @@ function cal_draw_period() {
             var twitter_text = Number(last_funded_amount).toLocaleString() + '円を、利回り' + yearly_yield + '%で運用しながら、毎月' + Number(monthly_amount).toLocaleString() + '円取り崩せる期間は' + period + '年です。';
         }
         make_tweet_share(twitter_text);
+        make_line_share(twitter_text);
         drawlinechart(periods, funded_amounts, principals, 'id_third_tab_radar_chart');
     }
 }
@@ -95,6 +103,7 @@ function cal_draw_yearly_yield() {
     var period = $('#id_yearly_yield_period')[0].value
     var last_funded_amount = $('#id_yearly_yield_last_funded_amount')[0].value
     $('.twitter_share').html('');
+    $('.line_share').html('');
     param_check(monthly_amount, period, yearly_yield, last_funded_amount)
     if (!param_check(monthly_amount, period, yearly_yield, last_funded_amount)) {
         var yearly_yield = cal_yearly_yield(monthly_amount, period, last_funded_amount);
@@ -108,6 +117,7 @@ function cal_draw_yearly_yield() {
         $('.result').html('利回り ' + Math.round(yearly_yield * 10) / 10 + '%');
         var twitter_text = Number(last_funded_amount).toLocaleString() + '円を、' + period + '年間、毎月' + Number(monthly_amount).toLocaleString() + '円取り崩すために必要な利回りは' + Math.round(yearly_yield * 10) / 10 + '%です。';
         make_tweet_share(twitter_text);
+        make_line_share(twitter_text);
         drawlinechart(periods, funded_amounts, principals, 'id_forth_tab_radar_chart');
     }
 }
