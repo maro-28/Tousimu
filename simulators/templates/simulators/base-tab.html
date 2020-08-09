@@ -17,6 +17,7 @@
       <div class='col-xl-10'>
         {% block explanation %}
         {% endblock explanation %}
+        <input type="button" value="テスト" onClick="pushBtn()" />
       </div>
     </div>
     <div class='row justify-content-center'>
@@ -231,4 +232,5 @@
 
 {% block js %}
 <script type="text/javascript" src="{% static 'simulators/js/base-tab.js' %}"></script>
+<script type="text/javascript" src="{% static 'simulators/js/html2canvas.min.js' %}"></script>
 {% endblock js %}
