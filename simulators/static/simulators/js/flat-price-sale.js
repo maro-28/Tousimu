@@ -33,7 +33,7 @@ function cal_draw_last_funded_amount() {
         var sns_text = '利回り' + yearly_yield + '%で運用しながら、' + period + '年間、毎月' + Number(monthly_amount).toLocaleString() + '円取り崩すために必要な総資産額は' + last_funded_amount.toLocaleString() + '円です。';
         window.functionLib.make_share_button('twitter', sns_text, 'flat-price-sale');
         window.functionLib.make_share_button('line', sns_text, 'flat-price-sale');
-        window.functionLib.make_share_button('facebook', sns_text, 'funded-simulator');
+        window.functionLib.make_share_button('facebook', sns_text, 'flat-price-sale');
         drawlinechart(periods, funded_amounts, principals, 'id_first_tab_radar_chart');
     }
 }
@@ -57,7 +57,7 @@ function cal_draw_monthly_amount() {
         var sns_text = Number(last_funded_amount).toLocaleString() + '円を、利回り' + yearly_yield + '%で運用しながら、' + period + '年間、毎月取り崩せる金額は' + Number(monthly_amount).toLocaleString() + '円です。';
         window.functionLib.make_share_button('twitter', sns_text, 'flat-price-sale');
         window.functionLib.make_share_button('line', sns_text, 'flat-price-sale');
-        window.functionLib.make_share_button('facebook', sns_text, 'funded-simulator');
+        window.functionLib.make_share_button('facebook', sns_text, 'flat-price-sale');
         drawlinechart(periods, funded_amounts, principals, 'id_second_tab_radar_chart');
     }
 }
@@ -86,7 +86,7 @@ function cal_draw_period() {
         }
         window.functionLib.make_share_button('twitter', sns_text, 'flat-price-sale');
         window.functionLib.make_share_button('line', sns_text, 'flat-price-sale');
-        window.functionLib.make_share_button('facebook', sns_text, 'funded-simulator');
+        window.functionLib.make_share_button('facebook', sns_text, 'flat-price-sale');
         drawlinechart(periods, funded_amounts, principals, 'id_third_tab_radar_chart');
     }
 }
@@ -110,7 +110,7 @@ function cal_draw_yearly_yield() {
         var sns_text = Number(last_funded_amount).toLocaleString() + '円を、' + period + '年間、毎月' + Number(monthly_amount).toLocaleString() + '円取り崩すために必要な利回りは' + Math.round(yearly_yield * 10) / 10 + '%です。';
         window.functionLib.make_share_button('twitter', sns_text, 'flat-price-sale');
         window.functionLib.make_share_button('line', sns_text, 'flat-price-sale');
-        window.functionLib.make_share_button('facebook', sns_text, 'funded-simulator');
+        window.functionLib.make_share_button('facebook', sns_text, 'flat-price-sale');
         drawlinechart(periods, funded_amounts, principals, 'id_forth_tab_radar_chart');
     }
 }
