@@ -32,6 +32,7 @@
   {% bootstrap_css %}
   {% bootstrap_javascript jquery='full' %}
 
+  <link rel="stylesheet" href="{% static 'simulators/css/base.css' %}">
   {% block css %}
   {% endblock css %}
 
@@ -72,6 +73,8 @@
       </div>
     </nav>
   </header>
+  {% block breadcrumbs %}
+  {% endblock breadcrumbs %}
   {% block content %}
   {% endblock content %}
   <footer class='page-footer font-small mt-5' style='background-color: #F8F9FA'>

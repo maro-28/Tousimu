@@ -37,6 +37,7 @@ input[type="number"] {
   outline: none !important;
   box-shadow: none !important;
 }
+
 .facebook:hover {
   background-color: #3B5998;
   color: #fff;
@@ -71,6 +72,6 @@ input[type="number"] {
   color: #EA5698;
 }
 
-.font-skyblue{
+.font-skyblue {
   color: #87A2DB;
 }
